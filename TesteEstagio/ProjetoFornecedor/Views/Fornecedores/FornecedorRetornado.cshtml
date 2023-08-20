@@ -1,0 +1,46 @@
+﻿@model FornecedorModel
+
+@{
+    ViewData["Title"] = "Buscar Fornecedor";
+}
+<a asp-action="Index" asp-controller="Fornecedores" class="btn btn-primary text-center border border-1 border-dark col-12 mb-4">
+    <span class="h3">Menu</span>
+</a>
+<h2 class="text-center">Preencha com o CNPJ para buscar o Fornecedor:</h2>
+<div class="text-center">
+    <form asp-controller="Fornecedores" asp-action="GetFornecedorCnpj" method="POST" class="form">
+        
+        <input asp-for="Cnpj" type="number" class="form-control distance" placeholder="CNPJ"  maxlength="14" oninput="limitarCNPJ()" id="cnpj" value=""/>
+        
+        <button class="btn btn-primary btn-block mb-3">Buscar</button>
+    </form>
+</div>
+
+@if (Model.Id != 0)
+{
+    <div class="card distance">
+        <div class="card-body border border-1 border-dark">
+            <span class="card-title text-center d-block mb-1">
+                <span class="h6">Nome:</span> @Model.Nome
+            </span>
+            <span class="card-title-small text-center mb-1 d-block">
+                <span class="h6">Cnpj:</span> @Model.Cnpj
+            </span>
+            <span class="card-title-small text-center  mb-1 d-block">
+                <span class="h6">Cep:</span> @Model.Cep
+            </span>
+            <span class="card-title-small text-center  mb-1  d-block">
+                <span class="h6">Endereco:</span> @Model.Endereco
+            </span>
+            <span class="card-title-small text-center   mb-1 d-block">
+                <span class="h6">Especialidade:</span> @Model.Especialidade
+            </span>
+
+            <div class="text-center">
+                <a asp-controller="Fornecedores" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning btn-block">Editar</a>
+                <a asp-controller="Fornecedores" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-block">Excluir</a>
+            </div>
+
+        </div>
+    </div>
+}

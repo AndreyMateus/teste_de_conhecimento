@@ -1,0 +1,50 @@
+﻿@model ICollection<FornecedorModel>
+
+@{
+    ViewData["Title"] = "Painel de Fornecedores";
+}
+  <style>
+    .container {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+    
+            h1 {
+                margin-bottom: 20px;
+                text-align: center;
+            }
+    
+            .btn-group {
+                text-align: center;
+                margin-top: 20px;
+            }
+    
+            .btn-custom {
+                color: #fff;
+                background-color: #007bff;
+                border-color: #007bff;
+            }
+    
+            .btn-custom:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+    
+            .border-styled {
+                border: 2px solid #007bff;
+                border-radius: 10px;
+                padding: 10px;
+            }
+    </style>
+
+<div class="container">
+    <h1>Painel de Administração de Fornecedores</h1>
+    <div class="text-center mb-4">
+        <img src="https://betalabs.com.br/wp-content/uploads/2022/10/Como-enviar-produtos-pelo-Correio.png" alt="Imagem" class="border-styled col-10">
+    </div>
+    <div class="btn-group d-flex justify-content-center" role="group" aria-label="Opções">
+        <a asp-action="Create" asp-controller="Fornecedores" class="btn btn-custom mx-2">Cadastrar Fornecedor</a>
+        <a asp-action="GetFornecedores" asp-controller="Fornecedores" class="btn btn-custom mx-2">Ver Todos os Fornecedores</a>
+        <a asp-action="FornecedorRetornado" asp-controller="Fornecedores" class="btn btn-custom mx-2">Buscar Fornecedor por CNPJ</a>
+    </div>
+</div>

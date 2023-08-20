@@ -1,0 +1,37 @@
+﻿@model ICollection<FornecedorModel>
+
+@{
+    ViewData["Title"] = "Lista de Todos os Fornecedores Cadastrados";
+}
+<div class="container">
+    <a asp-action="Index" asp-controller="Fornecedores" class="btn btn-primary text-center border border-1 border-dark col-12 mb-4"><span class="h3">Menu</span></a>
+    <h1>Lista de Todos os Fornecedores Cadastrados</h1>
+    @foreach (FornecedorModel fornecedor in Model)
+    {
+        <div class="card distance">
+            <div class="card-body border border-1 border-dark">
+                <span class="card-title text-center d-block mb-1">
+                    <span class="h6">Nome:</span> @fornecedor.Nome
+                </span>
+                <span class="card-title-small text-center mb-1 d-block">
+                    <span class="h6">Cnpj:</span> @fornecedor.Cnpj
+                </span>
+                <span class="card-title-small text-center  mb-1 d-block">
+                    <span class="h6">Cep:</span> @fornecedor.Cep
+                </span>
+                <span class="card-title-small text-center  mb-1  d-block">
+                    <span class="h6">Endereco:</span> @fornecedor.Endereco
+                </span>
+                <span class="card-title-small text-center   mb-1 d-block">
+                    <span class="h6">Especialidade:</span> @fornecedor.Especialidade
+                </span>
+
+                <div class="text-center">
+                    <a asp-controller="Fornecedores" asp-action="Update" asp-route-id="@fornecedor.Id" class="btn btn-warning btn-block">Editar</a>
+                    <a asp-controller="Fornecedores" asp-action="Delete" asp-route-id="@fornecedor.Id" class="btn btn-danger btn-block">Excluir</a>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>

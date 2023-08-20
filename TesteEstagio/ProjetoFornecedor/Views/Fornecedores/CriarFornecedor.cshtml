@@ -1,0 +1,65 @@
+﻿@model FornecedorModel;
+
+@{
+    ViewBag.Title = "Criar perfil de fornecedor";
+}
+
+<a asp-action="Index" asp-controller="Fornecedores" class="btn btn-primary text-center border border-1 border-dark col-12 mb-4">
+    <span class="h3">Menu</span>
+</a>
+<form asp-controller="Fornecedores" asp-action="Salvar" method="POST" class="form">
+    @if (Model.Id != 0)
+    {
+        <h2 class="text-center">Preencha o Formulário para Editar o perfil</h2>
+        <div class=" border border-dark distance ">
+            <div class="card-body">
+                <input asp-for="Id" type="hidden" value="@Model.Id"/>
+
+                <input asp-for="Nome" type="text" value="@Model.Nome" class="form-control distance" placeholder="Digite seu Nome" required/>
+
+                <input asp-for="Cnpj" type="number" class="form-control distance" placeholder="CNPJ" required maxlength="14" id="cnpj" value="@Model.Cnpj" oninput="limitarCNPJ()"/>
+
+                <input asp-for="Cep" type="number" value="@Model.Cep" id="cep" maxlength="8" oninput="limitarCEP()" onblur="consultarEndereco()" class="form-control distance" placeholder="Digite seu CEP" required>
+
+                <input asp-for="Endereco" id="endereco" type="text" class="form-control distance" placeholder="Digite seu Endereço" value="@Model.Endereco"/>
+
+                <select asp-for="Especialidade" class="form-select form-select-lg mb-3">
+                    <option selected disabled value="@Model.Especialidade">@Model.Especialidade</option>
+                    <option value="Comercio">Comércio</option>
+                    <option value="Servico">Serviço</option>
+                    <option value="Industria">Indústria</option>
+                </select>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-success text-center mb-3">Atualizar</button>
+            </div>
+        </div>
+    }
+    else
+    {
+        <h2 class="text-center">Preencha o Formulário para criar o perfil</h2>
+        <div class=" border border-dark distance ">
+            <div class="card-body">
+                <input asp-for="Id" type="hidden" value="@Model.Id"/>
+
+                <input asp-for="Nome" type="text" value="@Model.Nome" class="form-control distance" placeholder="Digite seu Nome" required/>
+
+                <input asp-for="Cnpj" type="number" class="form-control distance" placeholder="CNPJ" required maxlength="14" oninput="limitarCNPJ()" id="cnpj" value=""/>
+
+                <input asp-for="Cep" type="number" id="cep" maxlength="8" oninput="limitarCEP()" onblur="consultarEndereco()" class="form-control distance" placeholder="Digite seu CEP" required value="">
+
+                <input asp-for="Endereco" id="endereco" type="text" class="form-control distance" placeholder="Digite seu Endereço"/>
+
+                <select asp-for="Especialidade" class="form-select form-select-lg mb-3">
+                    <option selected disabled>Especialidade</option>
+                    <option value="Comercio">Comércio</option>
+                    <option value="Servico">Serviço</option>
+                    <option value="Industria">Indústria</option>
+                </select>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-success text-center mb-3">Cadastrar</button>
+            </div>
+        </div>
+    }
+</form>
